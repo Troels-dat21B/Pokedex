@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Form test</title>
+</head>
+<body>
+    <h1>Test af HTML FORM</h1>
+    <div>Navn: <span th:text="${mitNavn}"></span></div>
+    <div>Kodeord: <span th:text="${mitHemmeligeKodeord}"></span></div>
+
+    <form action="/formtest" method="post">
+        <label for="name"></label>
+        <label>Navn</label>
+        <input id="name" name="name" type="text">
+
+        <label for="pwd"></label>
+        <label id="pwd">Kodeord</label>
+        <input name="pwd" type="password">
+
+        <button type="submit">Login</button>
+    </form>
+
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Pokedex</title>
+</head>
+<body>
+<h1>Pokedex</h1>
+<table>
+    <thead>
+    <tr>
+        <th>
+        Pokedex
+        </th>
+        <th>
+            Navn
+        </th>
+        <th>
+            Speed
+        </th>
+        <th>
+            Special defence
+        </th>
+        <th>
+            Special attack
+        </th>
+        <th>
+            Defence
+        </th>
+        <th>
+            Attack
+        </th>
+        <th>Health points
+        <th>Primary type</th>
+        <th>Secondary type</th>
+        <th>Slet?</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="pokemon : ${pokemons}">
+        <td th:text="${pokemon.number}"></td>
+        <td th:text="${pokemon.name}"></td>
+        <td th:text="${pokemon.speed}"></td>
+        <td th:text="${pokemon.special_defence}"></td>
+        <td th:text="${pokemon.special_attack}"></td>
+        <td th:text="${pokemon.defence}"></td>
+        <td th:text="${pokemon.attack}"></td>
+        <td th:text="${pokemon.hp}"></td>
+        <td th:text="${pokemon.primary_type}"></td>
+        <td th:text="${pokemon.secondary_type}"></td>
+        <td>
+            <a th:href="@{'/delete/' + ${pokemon.number}}">Sletteknap</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
