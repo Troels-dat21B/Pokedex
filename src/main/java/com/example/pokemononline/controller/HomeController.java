@@ -44,7 +44,7 @@ public class HomeController {
     }
 
     @PostMapping("/create")
-    public String createPokemon(@RequestParam("pokedex") int pokedexNumber, @RequestParam("name") String navn, @RequestParam("speed") int speed, @RequestParam("special_defence") int special_defence,
+    public String createPokemon(@RequestParam("pokedex_number") int pokedexNumber, @RequestParam("name") String navn, @RequestParam("speed") int speed, @RequestParam("special_defence") int special_defence,
                                 @RequestParam("special_attack") int special_attack, @RequestParam("defence") int defence, @RequestParam("attack") int attack,
                                 @RequestParam("hp") int hp, @RequestParam("primary_type") String primary_type, @RequestParam("secondary_type") String secondary_type){
         //Lav ny pokemon
