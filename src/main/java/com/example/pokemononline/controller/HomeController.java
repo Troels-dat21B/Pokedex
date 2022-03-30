@@ -3,7 +3,6 @@ package com.example.pokemononline.controller;
 
 import com.example.pokemononline.model.Pokemon;
 import com.example.pokemononline.repository.PokemonRepositoy;
-import org.springframework.context.annotation.EnableMBeanExport;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
