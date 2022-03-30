@@ -53,7 +53,7 @@ public class PokemonRepositoy {
     }
 
     //Gem ny pokemon
-    public void createPokemon(Pokemon pokemon){
+    public void createPokemon(Pokemon pokemon) {
 
         //connect
         connectToMySQL();
@@ -78,7 +78,7 @@ public class PokemonRepositoy {
 
             //execute statement
             preparedStatement.executeUpdate();
-        }catch (SQLException e){
+        } catch (SQLException e) {
             System.out.println("Noget gik galt *shrugs*");
             e.printStackTrace();
         }
@@ -86,8 +86,57 @@ public class PokemonRepositoy {
 
     }
 
+    //Opdatere pokemon
+    public void updatePokemon(Pokemon pokemon) {
+
+        //SQL syntax
+        final String UPDATE_QUERY =
+                "UPDATE pokemon SET name = ?, speed = ?, special_defence = ?, special_attack = ?" +
+                        ", defence = ?, attack = ?, hp = ?, primary_type = ?, secondary_type = ? WHERE pokedex_number = ?";
+
+        int pokeNumber = pokemon.getNumber();
+        String name = pokemon.getName();
+        int speed = pokemon.getSpeed();
+        int specialDefense = pokemon.getSpecial_defence();
+        int specialAttack = pokemon.getSpecial_attack();
+        int defence = pokemon.getDefence();
+        int attack = pokemon.getAttack();
+        int hp = pokemon.getHp();
+        String primaryType = pokemon.getPrimary_type();
+        String secondaryTyoe = pokemon.getSecondary_type();
+
+        //connect
+        connectToMySQL();
+
+        try {
+            //prepare statement
+            PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_QUERY); //<--- SQL syntax
+
+            //set attributter
+            preparedStatement.setInt(1, pokeNumber);
+            preparedStatement.setString(2,name);
+            preparedStatement.setInt(3, speed);
+            preparedStatement.setInt(4, specialDefense);
+            preparedStatement.setInt(5, specialAttack);
+            preparedStatement.setInt(6, defence);
+            preparedStatement.setInt(7, attack);
+            preparedStatement.setInt(8, hp);
+            preparedStatement.setString(9, primaryType);
+            preparedStatement.setString(10, secondaryTyoe);
+
+            //execute statement
+            preparedStatement.executeUpdate();
+            System.out.println("Pokemon updated");
+
+        } catch (Exception e) {
+            System.out.println("Noget gik galt");
+        }
+
+
+    }
+
     //Delete by ID
-    public void deleteByID(int id){
+    public void deleteByID(int id) {
         //connect
         connectToMySQL();
 
@@ -101,7 +150,7 @@ public class PokemonRepositoy {
 
             preparedStatement.executeUpdate();
 
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println("Noget gik galt ved sletningen");
         }
     }

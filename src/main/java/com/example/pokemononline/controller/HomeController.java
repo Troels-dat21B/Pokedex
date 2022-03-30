@@ -62,6 +62,23 @@ public class HomeController {
         return "create";
     }
 
+    @GetMapping("/update/{id}")
+    public String updatePokemon(@PathVariable("id") int id, Model model){
+
+        return "/update";
+    }
+
+    @PostMapping("/update")
+    public String updatePokemon(@ModelAttribute Pokemon pokemon){
+
+
+
+
+
+
+        return "redirect:/";
+    }
+
     @GetMapping("/delete/{id}")
     public String deletePokemon(@PathVariable("id") int id){
 
